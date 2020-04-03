@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oDx-BQ-gd1">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="HalanTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeZ-j3-oXF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JDw-uL-ZKR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" placeholder="YES" id="ZQg-6z-iLF"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JDw-uL-ZKR" firstAttribute="leading" secondItem="zeZ-j3-oXF" secondAttribute="leading" id="8vu-ci-M0l"/>
+                                    <constraint firstAttribute="trailing" secondItem="JDw-uL-ZKR" secondAttribute="trailing" id="DWJ-r7-Amk"/>
+                                    <constraint firstItem="JDw-uL-ZKR" firstAttribute="width" secondItem="zeZ-j3-oXF" secondAttribute="width" id="LhD-32-Lq9"/>
+                                    <constraint firstAttribute="bottom" secondItem="JDw-uL-ZKR" secondAttribute="bottom" id="snL-Rq-66g"/>
+                                    <constraint firstItem="JDw-uL-ZKR" firstAttribute="top" secondItem="zeZ-j3-oXF" secondAttribute="top" id="xpm-92-mIr"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="eBk-wa-7eT"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Gug-Fc-aQW"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zeZ-j3-oXF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1DJ-hU-LfV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zeZ-j3-oXF" secondAttribute="bottom" id="IQA-e6-P5h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zeZ-j3-oXF" secondAttribute="trailing" id="fUk-MV-x8I"/>
+                            <constraint firstItem="zeZ-j3-oXF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mrP-aB-WDb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Oan-Ur-4jU"/>
+                    <connections>
+                        <outlet property="servicesStack" destination="JDw-uL-ZKR" id="SCl-2t-WjI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EiP-L6-sTk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oDx-BQ-gd1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1YO-9F-Stt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MFK-Md-ZXi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uzX-5M-iyp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>

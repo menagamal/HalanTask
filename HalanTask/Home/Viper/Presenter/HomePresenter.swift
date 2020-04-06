@@ -19,7 +19,7 @@ protocol HomePresenterDelegate {
 }
 
 class HomePresenter: HomePresenterDelegate,CategoryViewDelegate {
-  
+    
     private var interactor:HomeInteractor?
     private var router:HomeRouter?
     
@@ -64,7 +64,7 @@ class HomePresenter: HomePresenterDelegate,CategoryViewDelegate {
         }
         for (i,item) in categories.enumerated() {
             let view = CategoryView.loadFromNib(named: "CategoryView") as! CategoryView
-            view.setDetails(model: item, delegate: self, completation: { img in 
+            view.setDetails(model: item, delegate: self, completation: { img in
                 let imageData = img.pngData()
                 let imageToBaseStr = imageData!.base64EncodedString(options: .lineLength76Characters)
                 self.categories[i].imageBase64 = imageToBaseStr
@@ -109,7 +109,7 @@ class HomePresenter: HomePresenterDelegate,CategoryViewDelegate {
     func showDetailScreen() {
         self.router?.navigate(to: .ShowDetail(services: self.services))
     }
-      
+    
     func shouldCache() {
         self.interactor?.saveCachedItems(categories: self.categories)
     }
@@ -118,17 +118,17 @@ class HomePresenter: HomePresenterDelegate,CategoryViewDelegate {
     func listen() -> (Double,Double) {
         if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
             CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
-            
-            guard let currentLocation = locManager.location else {
-                return (0.0,0.0)
+            locManager = CLLocationManager()
+            if locManager != nil {
+                guard let currentLocation = locManager.location else {
+                    return (0.0,0.0)
+                }
+                return(Double(currentLocation.coordinate.latitude),Double(currentLocation.coordinate.longitude))
             }
             
-            return(Double(currentLocation.coordinate.latitude),Double(currentLocation.coordinate.longitude))
+            
             
         }
         return (0.0,0.0)
     }
-    
 }
-
-

@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreLocation
-class HomeViewController: UIViewController,HomeView {
+class HomeViewController: UIViewController,HomeView,CLLocationManagerDelegate {
     
     var presenter : HomePresenter!
     
-    var locManager:CLLocationManager!
+    var locManager = CLLocationManager()
+    
     
     @IBOutlet weak var servicesStack: UIStackView!
     
@@ -21,12 +22,37 @@ class HomeViewController: UIViewController,HomeView {
         
         HomeBuilder().build(vc: self, navigator: self.navigationController!)
         presenter = HomePresenter(interactor: HomeInteractor(), router: HomeRouter(navigationController: self.navigationController!), view: self)
-        locManager = CLLocationManager()
-        locManager.requestAlwaysAuthorization()
+        locManager.delegate = self
+        locManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        switch authorizationStatus {
+        case .authorizedAlways:
+            print("authorized")
+        case .authorizedWhenInUse:
+            print("authorized when in use")
+        case .denied:
+            print("denied")
+        case .notDetermined:
+            print("not determined")
+        case .restricted:
+            print("restricted")
+        }
+        
+        locManager.requestWhenInUseAuthorization()
+        locManager.startUpdatingLocation()
         presenter.loadCachedData()
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        
+        presenter.loadCachedData()
+    }
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         switch motion {
         case .motionShake:

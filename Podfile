@@ -6,7 +6,7 @@ target 'HalanTask' do
   use_frameworks!
 
   # Pods for HalanTask
-	pod 'Moya'
+  pod 'Moya'
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'Toast-Swift'
